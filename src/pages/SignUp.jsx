@@ -1,0 +1,92 @@
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import assets from "../assets/assets";
+
+function SignUp() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const { name, email, password } = formData;
+  const navigate = useNavigate();
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+  return (
+    <>
+      <div className="pageContainer">
+        <header>
+          <p className="pageHeader">Welcome Back!</p>
+        </header>
+        <form>
+          <input
+            type="text"
+            className="nameInput"
+            placeholder="Name"
+            id="name"
+            value={name}
+            onChange={onChange}
+          />
+          <input
+            type="email"
+            className="emailInput"
+            placeholder="Email"
+            id="email"
+            value={email}
+            onChange={onChange}
+          />
+          <div className="passwordInputDiv">
+            <input
+              type={showPassword ? "text" : "password"}
+              className="passwordInput"
+              placeholder="Password"
+              id="password"
+              value={password}
+              onChange={onChange}
+            />
+            <img
+              src={assets.icons.VisibilityIcon}
+              alt="show password"
+              className="showPassword"
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
+          </div>
+
+          <Link to="/forgot-password" className="forgotPasswordLink">
+            Forgot Password
+          </Link>
+          <div className="signUpBar">
+            <p className="signUpText">Sign Up</p>
+            <button className="signUpButton">
+              <img
+                style={{ filter: "invert(1)" }}
+                src={assets.icons.ArrowRightIcon}
+                width="34px"
+                height="34px"
+                alt="Right Arrow"
+              />
+            </button>
+          </div>
+        </form>
+        {/* Google OAuth */}
+        <Link
+          to="/sign-in"
+          className="registerLink"
+          style={{
+            marginTop: "-1rem",
+          }}
+        >
+          Sign In Instead
+        </Link>
+      </div>
+    </>
+  );
+}
+
+export default SignUp;

@@ -1,0 +1,11 @@
+In svg folder there are different svg files.
+While styling like the original color of icon is black or any other we can
+change that color directly in svg file or we can change height and width etc
+directly in that svg file.
+We have to use ReactComponent to access the svg file and for that we have to install
+different plugins which will be a difficult thing to handle.
+So we can create an assets.js file and simply import the files and create an object and
+directly import assets file in different components and pages to access those icons.
+
+src{assets.icons.arrow} we can use like this in img tag but we can also directly pass the
+path like src='../src/assests/svg/arrow'
