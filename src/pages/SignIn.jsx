@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import assets from "../assets/assets";
+import OAuth from "../components/OAuth";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,13 +17,31 @@ function SignIn() {
       [e.target.id]: e.target.value,
     }));
   };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      if (userCredential.user) {
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error("Bad User Credentials");
+    }
+  };
+
   return (
     <>
       <div className="pageContainer">
         <header>
           <p className="pageHeader">Welcome Back!</p>
         </header>
-        <form>
+        <form onSubmit={onSubmit}>
           <input
             type="email"
             className="emailInput"
@@ -62,8 +83,7 @@ function SignIn() {
             </button>
           </div>
         </form>
-
-        {/* Google OAuth */}
+        <OAuth />
         <Link to="/sign-up" className="registerLink">
           Sign Up Instead
         </Link>
