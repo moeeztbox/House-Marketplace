@@ -9,6 +9,7 @@ import {
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import assets from "../assets/assets";
+import OAuth from "../components/OAuth";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -104,7 +105,7 @@ function SignUp() {
             </button>
           </div>
         </form>
-        {/* Google OAuth */}
+        <OAuth />
         <Link
           to="/sign-in"
           className="registerLink"
