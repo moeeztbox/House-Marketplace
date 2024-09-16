@@ -6,12 +6,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import {
-  addDoc,
-  collection,
-  serverTimestamp,
-  Timestamp,
-} from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -150,6 +145,7 @@ function CreateListing() {
     navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   };
 
+  //Mutate function
   const onMutate = (e) => {
     let boolean = null;
     if (e.target.value === "true") {
