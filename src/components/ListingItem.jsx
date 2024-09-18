@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import assets from "../assets/assets";
 
-function ListingItem({ listing, id, onDelete }) {
+function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
     <li className="categoryListing">
       <Link
@@ -49,6 +49,14 @@ function ListingItem({ listing, id, onDelete }) {
           className="removeIcon"
           onClick={() => onDelete(listing.id, listing.name)}
           src={assets.icons.DeleteIcon}
+        />
+      )}
+
+      {onEdit && (
+        <img
+          className="editIcon"
+          onClick={() => onEdit(id)}
+          src={assets.icons.EditIcon}
         />
       )}
     </li>

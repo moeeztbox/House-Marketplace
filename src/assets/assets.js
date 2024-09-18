@@ -10,6 +10,8 @@ import DeleteIcon from "../assets/svg/deleteIcon.svg";
 import BedIcon from "../assets/svg/bedIcon.svg";
 import BathtubIcon from "../assets/svg/bathtubIcon.svg";
 import HomeIcon from "../assets/svg/homeIcon.svg";
+import ShareIcon from "./svg/shareIcon.svg";
+import EditIcon from "./svg/editIcon.svg";
 
 const assets = {
   icons: {
@@ -25,6 +27,8 @@ const assets = {
     BedIcon,
     BathtubIcon,
     HomeIcon,
+    ShareIcon,
+    EditIcon,
   },
 };
 export default assets;
