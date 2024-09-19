@@ -6,6 +6,14 @@ import { getAuth } from "firebase/auth";
 import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import assets from "../assets/assets";
+import { SwiperSlide, Swiper } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/a11y";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Helmet } from "react-helmet";
 function Listing() {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -34,6 +42,29 @@ function Listing() {
 
   return (
     <main>
+      <Helmet>
+        <title>{listing.name}</title>
+      </Helmet>
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+      >
+        {listing.imgUrls.map((url, index) => (
+          <SwiperSlide key={index}>
+            <div
+              style={{
+                background: `url(${url}) center no-repeat`,
+                backgroundSize: "cover",
+                height: "300px", // Ensure there's enough height to show the image
+              }}
+              className="swiperSlideDiv"
+            ></div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
       <div
         className="shareIconDiv"
         onClick={() => {

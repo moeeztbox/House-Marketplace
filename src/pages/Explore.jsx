@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import assets from "../assets/assets";
+import Slider from "../components/Slider";
 
 function Explore() {
   return (
@@ -9,6 +10,7 @@ function Explore() {
       </header>
 
       <main>
+        <Slider />
         <p className="exploreCategoryHeading">Categories</p>
         <div className="exploreCategories">
           <Link to="/category/rent">
